@@ -2,8 +2,7 @@
 	#define MYHEAD_H
 	#include "myhead.h"
 #endif
-
-template<typename T>
+template <typename T>
 class LinkList
 {
 public:
@@ -14,20 +13,41 @@ public:
 		LinkNode *next;
 	};
 
-	typedef LinkNode * NodePointer;
+	typedef LinkNode* NodePointer;
+	// 随机生成链表
+	void rangLinkList();
 	// 把非循环列表逆置
 	void adverse();
 	// 清空链表
-	clean();
+	void clean();
 	LinkList();
 	// 初始化拷贝函数
-	LinkList(const LinkList& otherL);
+	LinkList(const LinkList<T>& otherL);
 	virtual ~LinkList();
 protected:
 	NodePointer head;
 	
 };
-template<typename T>
+template <typename T>
+void LinkList<T>:: rangLinkList(){
+	NodePointer s, p;
+	head = p = NULL;
+	for (int i = 0; i < 7; ++i)
+	{
+		s = new LinkNode;
+		assert(s != 0);
+
+		s->data = (rand() % (100)); 
+		if(!head)
+			head = s;
+		else
+			p->next = s;
+		p = s;
+	}
+	p->next = NULL;
+}
+
+template <typename T>
 void LinkList<T>::adverse(){
 	NodePointer r, p, q;
 	if (!head)
@@ -47,8 +67,8 @@ void LinkList<T>::adverse(){
 
 }
 
-template<typename T>
-LinkNode<T>::clean(){
+template <typename T>
+void LinkList<T>::clean(){
 	NodePointer p, q;
 	p = NULL, q = head;
 	
@@ -60,17 +80,17 @@ LinkNode<T>::clean(){
 	head = NULL;
 }
 
-template<typename T>
+template <typename T>
 LinkList<T>::~LinkList(){
 	clean();
 }
 
-template<typename T>
+template <typename T>
 LinkList<T>::LinkList(){
 	head = NULL;
 }
 
-template<typename T>
+template <typename T>
 LinkList<T>::LinkList(const LinkList& otherL){
 	NodePointer p;
 	NodePointer op = otherL.head;

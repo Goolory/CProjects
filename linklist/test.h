@@ -1,14 +1,13 @@
 template<typename T>
-void displayObject(MySqList<T> rec){
+void displayObject(MyLinkList<T> rec){
 	cout<<endl;
 	cout<<rec;
 }
 
 template<typename T>
-void ex_1(MySqList<T> &rec, char & continueYesNo){
-	int no;
-	rec.rangeSqList();
-	cout<<"当前顺序表为："<<endl;
+void ex_1(MyLinkList<T> &rec, char& continueYesNo){
+	rec.rangLinkList();
+	cout<<"当前链表为："<<endl;
 
 	cout<<rec;
 
@@ -18,16 +17,9 @@ void ex_1(MySqList<T> &rec, char & continueYesNo){
 } 
 
 template<typename T>
-void ex_2(MySqList<T> &rec, char &continueYesNo){
-	int k;
-	cout<<"请输入元素序号：";
-	cin>>k;
-	T e;
-	if(rec.getElem(k, e) == OK) {
-		cout<<"查找到该序号元素为："<<e<<endl;
-	} else {
-		cout<<"序号错误，超出范围"<<endl;
-	}
+void ex_2(MyLinkList<T> &rec, char& continueYesNo){
+	cout<<"倒置链表"<<endl;
+	rec.adverse();
 
 	cout<<rec;
 

@@ -3,7 +3,7 @@
 	#include "LinkList.h"
 #endif
 
-template<typename T>
+template <typename T>
 class MyLinkList:public LinkList<T>
 {
 public:
@@ -13,23 +13,22 @@ public:
 	
 };
 
-template<typename T>
+template <typename T>
 void MyLinkList<T>::read(istream &in){
 	
 }
-
-template<typename T>
+template <typename T>
 istream& operator>>(istream& in, MyLinkList<T>& iD){
 	iD.read(in);
 	return in;
 }
 
-template<typename T>
+template <typename T>
 void MyLinkList<T>::display(ostream &out) const{
-	MyLinkList::NodePointer p;
+	LinkList::NodePointer p;
 	p = MyLinkList::head;
 	cout<<"head"<<endl;
-	cout<<"|"<<endl;
+	cout<<" | "<<endl;
 	while(p){
 		cout<<p->data<<"->";
 	}
@@ -37,7 +36,7 @@ void MyLinkList<T>::display(ostream &out) const{
 	cout<<endl;
 }
 
-template<typename T>
+template <typename T>
 ostream& operator<<(ostream& out, const MyLinkList<T> & oD){
 	oD.display(out);
 	return out;
